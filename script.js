@@ -33,44 +33,50 @@ const playerPlay = () => {
 
 const playRound = (playerSelection, computerSelection) => {
     if (playerSelection === computerSelection) {
-        return "It's a tie!";
+        return `It's a tie! \n You played: ${playerSelection} Computer played: ${computerSelection}`;
     }
     if (playerSelection === "rock") {
         if (computerSelection === "paper") {
-            return "Sorry player, Computer won!";
+            computerScore += 1;
+            return `Sorry player, Computer won! \n You played: ${playerSelection} Computer played: ${computerSelection} `;
         } else {
-            return "Congratulations, you won!";
+            playerScore += 1;
+            return `Congratulations, you won! \n You played: ${playerSelection} Computer played: ${computerSelection}`;
         }
     }
 
     if (playerSelection === "paper") {
         if (computerSelection === "scissors") {
-            return "Sorry player, Computer won!";
+            computerScore += 1;
+            return `Sorry player, Computer won! \n You played: ${playerSelection} Computer played: ${computerSelection}`;
         } else {
-            return "Congratulations, you won!";
+            playerScore +=1
+            return `Congratulations, you won! \n You played: ${playerSelection} Computer played: ${computerSelection}`;
         }
     }
     if (playerSelection === "scissors") {
         if (computerSelection === "rock") {
-            return "Sorry player, Computer won!";
+            computerScore += 1;
+            return `Sorry player, Computer won! \n You played: ${playerSelection} Computer played: ${computerSelection}`;
         } else {
-            return "Congratulations, you won!";
+            playerScore += 1;
+            return `Congratulations, you won! \n You played: ${playerSelection} Computer played: ${computerSelection}`;
         }
     }
 };
 
-const endGame = (playerScore, computerScore) => {
+const endGame = () => {
     if (playerScore > computerScore ) {
         console.log(
-            `Game Over! \nFinal score: \n${playerScore} to ${computerScore}`
+            `Game Over! \nFinal score: \n Player: ${playerScore} -- Computer: ${computerScore}`
         );
     } else if (computerScore > playerScore) {
         console.log(
-            `Game Over! \nFinal score: \n${playerScore} to ${computerScore}`
+            `Game Over! \nFinal score: \n Player: ${playerScore} -- Computer: ${computerScore}`
         );
     } else {
         console.log(
-            `Game Over! \nIt's a tie!!🍻 \nFinal score: \n${playerScore} to ${computerScore}`
+            `Game Over! \nIt's a tie!!🍻 \nFinal score: \n Player: ${playerScore} -- Computer: ${computerScore}`
         );
     }
 }
@@ -78,11 +84,11 @@ const endGame = (playerScore, computerScore) => {
 function game() {
     do {
         console.log(playRound(playerPlay(), computerPlay()));
+        // Counter here
+        rounds += 1;
     } while (rounds < 5);
 
         endGame();
     }
 
 game();
-
-
